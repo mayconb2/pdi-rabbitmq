@@ -1,4 +1,4 @@
-package com.abinbev.bees.pdiconsumer.entities;
+package com.abinbev.bees.pdiconsumer.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
