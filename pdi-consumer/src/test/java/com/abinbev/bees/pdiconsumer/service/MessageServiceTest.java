@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import static org.hamcrest.Matchers.*;
 
 
 @ExtendWith(MockitoExtension.class)
-public class MessageServiceTest {
+class MessageServiceTest {
 
     @Mock
     MessageRepository repository;
