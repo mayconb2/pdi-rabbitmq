@@ -3,9 +3,8 @@ package com.abinbev.bees.pdiconsumer.controller;
 import com.abinbev.bees.pdiconsumer.domain.Message;
 import com.abinbev.bees.pdiconsumer.services.MessageService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,12 @@ public class MessageController {
     @GetMapping
     public List<Message> findAll() {
         return service.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message createMessage(@RequestBody Message message) {
+        return service.createMessage(message);
     }
 
 }

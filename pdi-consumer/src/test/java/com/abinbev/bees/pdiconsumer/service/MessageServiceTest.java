@@ -40,4 +40,14 @@ class MessageServiceTest {
         assertThat(foundedMessages, is(not(empty())));
         assertThat(foundedMessages.get(0),is(equalTo(expectedMessage)));
     }
+
+    void whenMessageInformedThenItShouldBeCreated() {
+        //given
+        Message expectedMessage = new Message();
+        //when
+
+        //then
+        Message createdMessage = service.createMessage(expectedMessage);
+
+    }
 }

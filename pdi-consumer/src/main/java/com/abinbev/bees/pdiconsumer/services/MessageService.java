@@ -17,4 +17,8 @@ public class MessageService {
         return repository.findAll();
     }
 
+    public Message createMessage(Message message) {
+        return repository.save(message);
+    }
+
 }
