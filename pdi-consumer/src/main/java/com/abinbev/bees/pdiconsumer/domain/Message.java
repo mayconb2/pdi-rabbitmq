@@ -9,10 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "messages")
+@Document(collection = "messages-rabbitmq")
 public class Message {
 
     @Id
     private String id;
+    private String user;
     private String message;
 }
