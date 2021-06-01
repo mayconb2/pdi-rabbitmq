@@ -1,5 +1,6 @@
 package com.abinbev.bees.pdiproducer.controller;
 
+import com.abinbev.bees.pdiproducer.dto.MessageDTO;
 import com.abinbev.bees.pdiproducer.service.MessageRabbitmqSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,8 @@ public class MessageSenderController {
     }
 
     @PostMapping
-    public String publishMessage(@RequestBody String message) {
-        rabbitmqSender.send(message);
+    public String publishMessage(@RequestBody MessageDTO message) {
+        rabbitmqSender.send(message.getMessage());
         return "Mensagem encaminhada com sucesso";
     }
 }
