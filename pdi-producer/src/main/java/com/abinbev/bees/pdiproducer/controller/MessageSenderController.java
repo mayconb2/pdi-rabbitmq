@@ -21,7 +21,7 @@ public class MessageSenderController {
 
     @PostMapping
     public String publishMessage(@RequestBody MessageDTO message) {
-        rabbitmqSender.send(message.getMessage());
+        rabbitmqSender.send(message);
         return "Mensagem encaminhada com sucesso";
     }
 }
