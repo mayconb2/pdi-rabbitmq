@@ -13,17 +13,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MessageController {
 
-    private final MessageService service;
+//    private final MessageService service;
+//
+//    @GetMapping
+//    public List<Message> findAll() {
+//        return service.findAll();
+//    }
 
-    @GetMapping
-    public List<Message> findAll() {
-        return service.findAll();
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Message createMessage(@RequestBody Message message) {
-        return service.createMessage(message);
-    }
+//    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public Message createMessage(@RequestBody Message message) {
+//        return service.createMessage(message);
+//    }
 
 }
