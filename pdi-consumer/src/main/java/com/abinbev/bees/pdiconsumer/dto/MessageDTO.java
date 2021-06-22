@@ -1,5 +1,6 @@
 package com.abinbev.bees.pdiconsumer.dto;
 
+import com.abinbev.bees.pdiconsumer.domain.Message;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
@@ -10,16 +11,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonSerialize
-public class MessagePostDTO {
+public class MessageDTO {
 
     @JsonProperty
     private String message;
     @JsonProperty private String user;
 
+    public Message toEntity() {
+        return new Message("", this.getUser(), this.getMessage());
+    }
 
     @Override
     public String toString() {
-        return "MessagePostDTO{" +
+        return "MessageDTO {" +
                 "message='" + message + '\'' +
                 ", user='" + user + '\'' +
                 '}';
