@@ -16,16 +16,20 @@ const Chat = () => {
 
     e.preventDefault();
 
-    axios.post('http://localhost:8091/api/v1/messages',{user, message})
+    axios.post(`http://${BASE_URL}:${PORT}/api/v1/messages`,{user, message})
     .then(data => {
-      console.log('Mensagem encaminhada com sucesso')
-      console.log(data)
+      alert(data.data);
+      console.log(data);
     }).catch(e => {
-      console.error(e)
+      console.error(e);
+    }).finally(() => {
+      clearMessageField();
     });
   }
 
-
+  const clearMessageField = () => {
+    SetMessage('');
+  }
 
 
   return (
