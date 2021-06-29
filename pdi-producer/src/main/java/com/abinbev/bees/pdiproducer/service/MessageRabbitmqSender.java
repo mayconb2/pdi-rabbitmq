@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 public class MessageRabbitmqSender {
 
+    private final RabbitTemplate rabbitTemplate;
+
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    public MessageRabbitmqSender(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
     @Value("${rabbitmq.exchange}")
     private String exchange;
