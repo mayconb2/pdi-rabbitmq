@@ -1,11 +1,40 @@
+import axios from 'axios';
+import { useState } from 'react';
+
+axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
 const Chat = () => {
+
+  const BASE_URL = 'localhost';
+  const PORT = '8091';
+
+  const [user, setUser] = useState('');
+  const [message, SetMessage] = useState('');
+
+  const onPostMessage = (e: React.SyntheticEvent) => {
+
+    e.preventDefault();
+
+    axios.post('http://localhost:8091/api/v1/messages',{user, message})
+    .then(data => {
+      console.log('Mensagem encaminhada com sucesso')
+      console.log(data)
+    }).catch(e => {
+      console.error(e)
+    });
+  }
+
+
+
+
   return (
     <>
-      <form action="">
+      <form onSubmit={onPostMessage}>
         <div>
           <div className="mb-6">
           <label className="form-label">Seu nome</label>
-          <input type="text" className="form-control"/>
+          <input type="text" className="form-control" value={user} onChange={(e) => setUser(e.target.value)}/>
           </div>
           
           <br/>
@@ -13,7 +42,7 @@ const Chat = () => {
           <div>
             <div className="mb-6">
             <label className="form-label">Mensagem</label>
-            <input type="text" className="form-control"/>
+            <input type="text" className="form-control" value={message} onChange={(e) => SetMessage(e.target.value)}/>
             </div>
           </div>
         </div>
