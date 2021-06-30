@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 public class MessageRabbitmqSender {
 
-    private final RabbitTemplate rabbitTemplate;
+        private final RabbitTemplate rabbitTemplate;
 
     @Autowired
     public MessageRabbitmqSender(RabbitTemplate rabbitTemplate) {
