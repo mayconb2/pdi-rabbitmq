@@ -21,6 +21,7 @@ const Chat = () => {
       alert(data.data);
       console.log(data);
     }).catch(e => {
+      alert("Houve um erro para encaminhar sua mensagem")
       console.error(e);
     }).finally(() => {
       clearMessageField();
