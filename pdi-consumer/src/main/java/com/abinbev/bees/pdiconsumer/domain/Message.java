@@ -1,5 +1,6 @@
 package com.abinbev.bees.pdiconsumer.domain;
 
+import com.abinbev.bees.pdiconsumer.dto.MessageDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,9 @@ public class Message {
     private String id;
     private String user;
     private String message;
+
+    public MessageDTO toDTO() {
+        return new MessageDTO(this.message, this.user);
+    }
 
 }

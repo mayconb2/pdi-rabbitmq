@@ -1,4 +1,4 @@
-import Chat from "components/chat";
+import HeaderChat from "components/headerChat";
 
 const Home = () => {
     return (
@@ -12,7 +12,7 @@ const Home = () => {
             <p>Aplicação usando Java, Spring, RabbitMQ e React.</p>
           </div>
 
-          <Chat/>
+          <HeaderChat/>
         </div>
         </>
     )

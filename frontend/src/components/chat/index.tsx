@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
+import { Message } from 'types/message';
 
 axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
@@ -7,54 +8,47 @@ axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 const Chat = () => {
 
   const BASE_URL = 'localhost';
-  const PORT = '8091';
+  const PORT = '9090';
 
-  const [user, setUser] = useState('');
-  const [message, SetMessage] = useState('');
 
-  const onPostMessage = (e: React.SyntheticEvent) => {
+  const [chatMessage, setChatMessage] = useState<Message[]>([]);
+  // const [id, setId] = useState<Number>(0);
 
-    e.preventDefault();
 
-    axios.post(`http://${BASE_URL}:${PORT}/api/v1/messages`,{user, message})
-    .then(data => {
-      alert(data.data);
-      console.log(data);
-    }).catch(e => {
-      alert("Houve um erro para encaminhar sua mensagem")
-      console.error(e);
-    }).finally(() => {
-      clearMessageField();
-    });
-  }
-
-  const clearMessageField = () => {
-    SetMessage('');
-  }
-
+  useEffect(() => {
+    
+    // setInterval(() => {
+      console.log('fetching...')
+      axios.get(`http://${BASE_URL}:${PORT}/api/v1/messages/getAllMessages`).then(data => {
+        // console.log(data.data)
+        setChatMessage(data.data);
+      })
+    // }, 1000)
+  },[]);
 
   return (
     <>
-      <form onSubmit={onPostMessage}>
-        <div>
-          <div className="mb-6">
-          <label className="form-label">Seu nome</label>
-          <input type="text" className="form-control" value={user} onChange={(e) => setUser(e.target.value)}/>
+     
+      <div>
+            <table>
+              <tr>
+                <th>Usuário</th>
+                <th>Msg</th>
+              </tr>
+              <tbody>
+                {
+                  chatMessage.map(m => (
+                    <tr>
+                        <td>{m.user}</td>
+                        <td>{m.message}</td>
+                    </tr>
+                ))
+                }
+              </tbody>
+            </table>
           </div>
-          
-          <br/>
 
-          <div>
-            <div className="mb-6">
-            <label className="form-label">Mensagem</label>
-            <input type="text" className="form-control" value={message} onChange={(e) => SetMessage(e.target.value)}/>
-            </div>
-          </div>
-        </div>
-        <br/>
-        <button type="submit" className="btn btn-primary">Enviar</button>
-      </form>
-    </>
+     </>
   )
 }
 
