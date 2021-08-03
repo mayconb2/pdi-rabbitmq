@@ -29,24 +29,30 @@ const Chat = () => {
   return (
     <>
      
-      <div>
-            <table>
-              <tr>
-                <th>Usuário</th>
-                <th>Msg</th>
-              </tr>
-              <tbody>
-                {
-                  chatMessage.map(m => (
-                    <tr>
-                        <td>{m.user}</td>
-                        <td>{m.message}</td>
-                    </tr>
-                ))
-                }
-              </tbody>
-            </table>
+     {/* <div className="container"> */}
+      <div className="p-3 bg-light border">
+          <div className="row align-items-center">
+            <div className="col-2 display-16"><p className="fw-bold">Usuário</p></div>
+            <div className="col-10 display-8"><p className="fw-bold">Mensagem</p></div>
           </div>
+          
+            {
+              chatMessage.map(m => (
+                <>
+                  <div className="row align-items-center">
+                    <div className="col-2">
+                        {m.user}
+                    </div>
+                    <div className="col-10">
+                        {m.message}
+                    </div>
+                  </div>
+                </>
+            ))
+            }
+      </div>
+     {/* </div> */}
+      
 
      </>
   )
